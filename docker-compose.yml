@@ -10,10 +10,16 @@ services:
     command: "--config.file=/prombound/prometheus.yml"
   blackbox:
     privileged: true
-    image: prom/blackbox-exporter:master
+    image: prom/blackbox-exporter
     volumes:
       - ./blackbox.yml:/config/blackbox.yml
     ports:
       - "9115:9115"
     command: "--config.file=/config/blackbox.yml"
-
+  alertmanager:
+    image: prom/alertmanager
+    volumes:
+      - ./alertmanager.yml:/config/alertmanager.yml
+    ports:
+      - "9093:9093"
+    command: "--config.file=/config/alertmanager.yml"

@@ -14,21 +14,20 @@ scrape_configs:
     module: [icmp]
   static_configs:
   - targets:
-    - 192.168.1.23
+    - 192.168.1.2
   relabel_configs:
   - source_labels: [__address__]
     target_label: __param_target
   - source_labels: [__param_target]
     target_label: instance
   - target_label: __address__
-    replacement: blackbox:9115  # The blackbox exporter's real hostname:port.
-
+    replacement: blackbox:9115
 
 alerting:
-    alertmanagers:
-        - scheme: http
-          static_configs:
-              - targets: ['localhost:9093']
+  alertmanagers:
+    - scheme: http
+      static_configs:
+        - targets: ['alertmanager:9093']
 
 rule_files:
-    - '/home/kon/consumers/alert.rules.yml'
+  - '/prombound/alert.rules.yml'

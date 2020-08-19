@@ -1,0 +1,13 @@
+global:
+  resolve_timeout: 5m
+  smtp_smarthost: '$SMTP_SMARTHOST'
+  smtp_from: '$SMTP_FROM'
+  smtp_auth_username: '$SMTP_AUTH_USERNAME'
+  smtp_auth_password: '$SMTP_AUTH_PASSWORD'
+
+route:
+  receiver: 'email.hook'
+receivers:
+- name: 'email.hook'
+  email_configs:
+  - to: '$TO'
