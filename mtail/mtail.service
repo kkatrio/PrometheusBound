@@ -1,0 +1,13 @@
+[Unit]
+Description=mtail exporter
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=kon
+Group=kon
+Type=simple
+ExecStart=/home/kon/PrometheusBound/mtail/mtail --progs /home/kon/PrometheusBound/mtail/mtailprogs/ --logs /var/log/apache2/access.log,/var/log/syslog
+
+[Install]
+WantedBy=multi-user.target

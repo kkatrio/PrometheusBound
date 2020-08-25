@@ -1,0 +1,7 @@
+counter maybe_ipv4
+
+const IPv4 /(?P<ip>\d+\.\d+\.\d+\.\d+)/
+
+IPv4{
+  maybe_ipv4++
+}

@@ -1,0 +1,5 @@
+counter ufw_blocks by source_ip
+
+/UFW BLOCK.*SRC=(?P<source_ip>[0-9A-Za-z\.:-]+)/ {
+  ufw_blocks[$source_ip]++
+}
