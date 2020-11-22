@@ -1,3 +1,4 @@
+SHELL := /bin/bash
 SECRETS := $(shell readlink -f ./.env)
 
 all: alertmanager.yml prometheus.yml blackbox.yml
@@ -10,5 +11,9 @@ prometheus.yml: alert.rules.yml
 
 clean:
 	rm alertmanager.yml
-down:
+
+stop:
+	docker-compose stop
+
+down: clean
 	docker-compose down -v

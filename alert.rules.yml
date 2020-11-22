@@ -3,7 +3,7 @@ groups:
     rules:
       - alert: second_floor_disconnected
         expr: probe_success == 0
-        for: 1m
+        for: 2s
         labels:
           severity: page
         annotations:
