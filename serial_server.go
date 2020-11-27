@@ -63,6 +63,11 @@ func main() {
 		}
 	})
 
+	http.HandleFunc("/silence", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Println("sending silnce")
+		send_serial("0")
+	})
+
 	log.Fatal(http.ListenAndServe(":8080", nil))
 
 }
